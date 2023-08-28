@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Animal Information </title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Animal Information</h1>
+    <div id="animal-table"></div>
+
+    <script>
+        // Initialize the table HTML with the header row
+        let tableHTML = '<table>';
+        tableHTML += '<tr><th>Animal ID</th><th>Owner Name</th><th>Weight</th><th>Age</th><th>Age Bracket</th></tr>'; // Added Age Bracket header
+
+        // Updated animals array with 16 elements of different age ranges
+        const animals = [
+            {id: 1, name: "Fluffy", owner: "Alice", weight: 12, age: 3},
+            {id: 2, name: "Max", owner: "Bob", weight: 20, age: 5},
+            {id: 3, name: "Caramel", owner: "Dave", weight: 25, age: 15},
+            {id: 4, name: "Choco", owner: "Byron", weight: 30, age: 1},
+            {id: 5, name: "Blackie", owner: "Joshua", weight: 22, age: 0.3},
+            {id: 6, name: "Cinder", owner: "Luigi", weight: 6, age: 6},
+            {id: 7, name: "Chico", owner: "John", weight: 6, age: 8},
+            {id: 8, name: "Padodoodle", owner: "Gab", weight: 9, age: 8},
+            {id: 9, name: "Baguette", owner: "David", weight: 54, age: 7},
+            {id: 10, name: "Orbit", owner: "Sarah", weight: 1, age: 3},
+            {id: 11, name: "Marmon", owner: "Brice", weight: 14, age: 2},
+            {id: 12, name: "Duke", owner: "Brennan", weight: 2, age: 0.4},
+            {id: 13, name: "Chow", owner: "Diego", weight: 15, age: 1},
+            {id: 14, name: "Nuggets", owner: "Pablo", weight: 60, age: 16},
+            {id: 15, name: "Macaron", owner: "Dora", weight: 5, age: 5},
+            {id: 16, name: "Sally", owner: "Luffy", weight: 8, age: 7},
+            
+            // 16 is needed for dummy data
+        ];
+
+        // Function to get the age bracket based on the age
+        function getAgeBracket(age) {
+            if (age < 0.9) {
+                return "Puppy";
+            } else if (age >= 0.9 && age <= 10) {
+                return "Adult";
+            } else if (age > 10 && age <= 15) {
+                return "Senior";
+            } else {
+                return "Geriatric";
+            }
+        }
+
+        // Loop through the animals array and generate table rows
+        for (const animal of animals) {
+            tableHTML += '<tr>';
+            tableHTML += `<td>${animal.id}</td>`;
+            tableHTML += `<td>${animal.owner}</td>`;
+            tableHTML += `<td>${animal.weight}</td>`;
+            tableHTML += `<td>${animal.age}</td>`;
+            tableHTML += `<td>${getAgeBracket(animal.age)}</td>`; // Add age bracket cell
+            tableHTML += '</tr>';
+        }
+
+        tableHTML += '</table>';
+
+        // Set the generated table HTML to the div with id 'animal-table'
+        document.getElementById('animal-table').innerHTML = tableHTML;
+    </script>
+</body>
+</html>
